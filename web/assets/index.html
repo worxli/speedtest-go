@@ -10,6 +10,7 @@
 		function I(i) { return document.getElementById(i); }
 		//INITIALIZE SPEEDTEST
 		var s = new Speedtest(); //create speedtest object
+		s.setParameter("telemetry_level","full"); //enable telemetry
 
 		var meterBk = /Trident.*rv:(\d+\.\d+)/i.test(navigator.userAgent) ? "#EAEAEA" : "#80808040";
 		var dlColor = "#6060AA",
@@ -226,9 +227,18 @@
 			margin: 0 auto;
 		}
 
-		@media all and (max-width:40em) {
+		@media all and (max-width: 40em) {
 			body {
 				font-size: 0.8em;
+			}
+			.header {
+				flex-direction: column;
+			}
+			.header h1 {
+				display: none;
+			}
+			#startStopBtn {
+				width: 80%
 			}
 		}
 
@@ -243,13 +253,13 @@
 </head>
 
 <body>
-	<div class="flex flex-row justify-between mt-12 mx-16">
+	<div class="flex header justify-between mt-12 mx-16">
 		<img src="logo-text-on-dark.svg" class="w-64">
-		<h1 class="text-3xl font-bold">SCION Speedtest by Anapaya</h1>
+		<h1 class="text-3xl font-bold mt-4">SCION Speedtest by Anapaya</h1>
 		<div class="w-64"></div>
 	</div>
-	<div class="mt-8 text-center">
-		<button id="startStopBtn" class="rounded-full button w-40 h-10" onclick="startStop()"></button>
+	<div class="mt-12 text-center">
+		<button id="startStopBtn" onclick="startStop()"></button>
 		<div id="test">
 			<div class="testGroup">
 				<div class="testArea2">
